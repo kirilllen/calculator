@@ -27,7 +27,11 @@ public class Validation {
                 "\\d+[.]\\d+[/]|\\d+[/]|"; //учитываем целые, дробные чила и знаки операции
         Pattern pattern=Pattern.compile(regex);
         Matcher matcher= pattern.matcher(expression);
-        return matcher.replaceAll("").length()==0;
+        String lastNumber=matcher.replaceAll(""); //должно остаться последнее число без действия за ним
+        String regexLastNumber="\\d+[.]\\d+|\\d+";
+        Pattern patternLastNumber=Pattern.compile(regexLastNumber);
+        Matcher matcherLastNumber=patternLastNumber.matcher(lastNumber);
+        return matcherLastNumber.replaceFirst("").length()==0;
     }
 
 }
