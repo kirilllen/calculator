@@ -13,7 +13,7 @@ public class Validation {
 
     private static boolean isValidChars(String expression){
         //проверка правильности символов
-        String regex="\\d+|\\d+[.]\\d+|[+]|[-]|[*]|[/]"; //учитываем целые, дробные чила и знаки операции
+        String regex="\\d+|\\d+.\\d+|[+]|[-]|[*]|[/]"; //учитываем целые, дробные чила и знаки операции
         Pattern pattern=Pattern.compile(regex);
         Matcher matcher= pattern.matcher(expression);
         return matcher.replaceAll("").length()==0; //если были "плохие" символы, то строка будет ненулевая
@@ -21,7 +21,7 @@ public class Validation {
 
     private static boolean isOperatorsCorrectAndNoNegative(String expression){
         //проверка отсутствия повторения символов друг за другом и отсутствия отрицательных чисел
-        String regex="\\d+[+]|\\d+[.]\\d+[+]|\\d+[-]|\\d+[.]\\d+[-]|\\d+[*]|\\d+[.]\\d+[*]|\\d+[/]|\\d+[.]\\d+[/]|\\d+|\\d+[.]\\d+"; //учитываем целые, дробные чила и знаки операции
+        String regex="\\d+[+]|\\d+.\\d+[+]|\\d+[-]|\\d+.\\d+[-]|\\d+[*]|\\d+.\\d+[*]|\\d+[/]|\\d+.\\d+[/]|\\d+|\\d+.\\d+"; //учитываем целые, дробные чила и знаки операции
         Pattern pattern=Pattern.compile(regex);
         Matcher matcher= pattern.matcher(expression);
         return matcher.replaceAll("").length()==0;
