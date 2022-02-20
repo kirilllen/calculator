@@ -1,8 +1,10 @@
 package InputOutput;
 
+import MathLogic.Calculations;
+
 public class Output {
 
-    public void printResult(double result){
-        System.out.println("Результат вычислений составил: "+result);
+    public static void printResult(String expression){
+        System.out.println("Результат вычислений составил: "+Calculations.calculateResult(expression));
     }
 }
