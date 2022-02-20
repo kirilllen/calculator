@@ -1,10 +1,12 @@
 package MathLogic;
 
+import Exceptions.DivideByZeroException;
+
 import java.util.Iterator;
 import java.util.List;
 
 public class Calculations {
-    public static double calculateResult(String expression) {
+    public static double calculateResult(String expression) throws DivideByZeroException {
         double calculationResult=0;
         ReversePolishNotation reversePolishNotation = new ReversePolishNotation();
         List<String> reversePolishNotationInList = reversePolishNotation.getListInReversePolishNotation(expression);
@@ -23,9 +25,14 @@ public class Calculations {
                         calculationDone = true;
                         break;
                     case "/":
-                        calculationResult = Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 2)) /
-                                Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 1));
-                        calculationDone = true;
+                        if (Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 1))!=0) {
+                            calculationResult = Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 2)) /
+                                    Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 1));
+                            calculationDone = true;
+                        }
+                        else {
+                            throw new DivideByZeroException();
+                        }
                         break;
                     case "+":
                         calculationResult = Double.parseDouble(reversePolishNotationInList.get(iteratorCounter - 2)) +

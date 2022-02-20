@@ -1,14 +1,22 @@
 package ParsingClasses;
 
+import Exceptions.IncorrectOperatorException;
+import Exceptions.WrongSymbolException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validation {
 
-    public static boolean isValid(String expression) {
+    public static void isValid(String expression) throws WrongSymbolException, IncorrectOperatorException {
         boolean charsOk=isValidChars(expression);
         boolean noRepeatOrNegative=isOperatorsCorrectAndNoNegative(expression);
-        return charsOk&&noRepeatOrNegative;
+        if (!charsOk) {
+            throw new WrongSymbolException();
+        }
+        if (!noRepeatOrNegative) {
+            throw new IncorrectOperatorException();
+        }
     }
 
     private static boolean isValidChars(String expression){

@@ -1,19 +1,15 @@
+import Exceptions.DivideByZeroException;
+import Exceptions.IncorrectOperatorException;
+import Exceptions.WrongSymbolException;
 import InputOutput.Input;
 import InputOutput.Output;
-import MathLogic.Calculations;
 import ParsingClasses.Validation;
-
-import java.util.List;
 
 public class Main {
 
-    public static void main (String[] args){
-        while(true) {
-            String expression = Input.readString();
-            if (Validation.isValid(expression)) {
-                Output.printResult(expression);
-            }
-
-        }
+    public static void main (String[] args) throws WrongSymbolException, IncorrectOperatorException, DivideByZeroException {
+       String expression = Input.readString();
+       Validation.isValid(expression);
+       Output.printResult(expression);
     }
 }
