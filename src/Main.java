@@ -12,7 +12,7 @@ public class Main {
             String expression = Input.readString();
             System.out.println(Validation.isValid(expression));
             ReversePolishNotation RPN=new ReversePolishNotation();
-            RPN.getListInReversePolishNotation(expression).stream().forEach(System.out::print);
+            List<String> rrr=RPN.getListInReversePolishNotation(expression);
         }
     }
 }

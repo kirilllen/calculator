@@ -66,8 +66,9 @@ public class ReversePolishNotation {
             }
         }
         while (!stack.isEmpty()){
-            finalString.add(stack.get(0).toString());
-            finalString.remove(0);
+            finalString.add(stack.get(counterStack-1).toString());
+            stack.remove(counterStack-1);
+            counterStack--;
         }
         return finalString;
     }
